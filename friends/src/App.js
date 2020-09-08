@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
+import Login from './components/Login';
+import Friends from './components/Friends';
+import PrivateRoute from './components/PrivateRoute';
+import reducer from './reducer/index';
+// import './App.css';
 
 function App() {
+  const initialState = {
+    friends: []
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const setFriends = (friendsData) => {
+    dispatch({type: "SET_FRIENDS", payload: friendsData});
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <ul>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+      <li>
+      <Link to="/friends">Friends</Link>
+      </li>
+      </ul>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <PrivateRoute exact path="/friend" friend={state.friends} setFriends={setFriends} component={Friends} />
+      </Switch> */}
     </div>
   );
 }
