@@ -47,7 +47,7 @@ const Friends = (props) => {
     }
 
     const updateFriend = (id, data) => {
-        axios.delete(`http://localhost:5000/api/friends/${id}`, data)
+        axios.put(`http://localhost:5000/api/friends/${id}`, data)
         .then(({data})=>{
             props.setFriends(data);
         })
@@ -57,7 +57,7 @@ const Friends = (props) => {
     }
 
     useEffect(() => {
-        axios.delete("http://localhost:5000/api/friends")
+        axios.get("http://localhost:5000/api/friends")
         .then(({data})=>{
             props.setFriends(data);
         })
@@ -66,5 +66,35 @@ const Friends = (props) => {
         
         });
     }, []);
+
+    return (
+        <main className="friends-list">
+            <h1>Friends List</h1>
+            <form onSubmit={onSubmit} className="friendForm">
+                <label htmlFor="name">
+                    <input
+                    onChange={onChange}
+                    type="text" name="name"
+                    value={edits.name}
+                    placeholder="Name"/>
+                </label>
+                <label htmlFor="age">   
+                    <input
+                    onChange={onChange}
+                    type="number" name="age"
+                    value={edits.age}
+                    placeholder="Age"/>    
+                </label>
+                <label htmlFor="email">
+                    <input
+                    onChange={onChange}
+                    type="email" name="email"
+                    value={edits.email}
+                    placeholder="Email"/>    
+                </label>
+                <button>Submit</button>
+            </form>
+        </main>
+    )
 
 }
