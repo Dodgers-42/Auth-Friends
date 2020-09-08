@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <ul>
+      {/* <ul>
       <li>
         <Link to="/login">Login</Link>
       </li>
@@ -30,7 +30,7 @@ function App() {
       <Switch>
         <Route path="/login" component={Login} />
         <PrivateRoute exact path="/friend" friend={state.friends} setFriends={setFriends} component={Friends} />
-      </Switch>
+      </Switch> */}
     </div>
   );
 }

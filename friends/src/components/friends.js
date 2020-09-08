@@ -6,7 +6,7 @@ import Friend from "./Friend";
 const axios = axiosWithAuth();
 
 const Friends = (props) => {
-    const [data, setData] = useState({
+    const [formData, setFormData] = useState({
         name: "",
         age: "",
         email: ""
@@ -14,17 +14,17 @@ const Friends = (props) => {
 
     const onChange = e => {
         setData({
-            ...data,
+            ...formData,
             [e.target.name]: e.target.value
         });
     }
 
     const onSubmit = e => {
         e.preventDefault();
-        axios.post("http://localhost:5000/api/friends", data)
+        axios.post("http://localhost:5000/api/friends", formData)
         .then(({data})=> {
             props.setFriends(data);
-            setData({
+            setFormData({
                 name: "",
                 age: "",
                 email: ""

@@ -20,24 +20,38 @@ const Friend = (props) => {
         setEditing(false);
     }
     return (
-        <div>
+        <div className="friend">
+            {editing ?(
             <div>
-                {editing ?(
                 <input
-                    onChange={onChange}type="text" name="name"value={edits.name}placeholder="name"/>
+                    onChange={onChange}
+                    type="text" name="name"
+                    value={edits.name}
+                    placeholder="name"
+                    />
                 <input
-                    onChange={onChange}type="number" name="age"value={edits.age}placeholder="age"/>
+                    onChange={onChange}type="number" name="age"value={edits.age}placeholder="age"
+                    />
                 <input
-                    onChange={onChange}type="email" name="email"value={edits.email}placeholder="email"/>
-            </div>
+                    onChange={onChange}type="email" name="email"value={edits.email}placeholder="email"
+                    />
+            
             <div>
                 <button onClick={()=> setEditing(false)}>Cancel</button>
                 <button onClick={()=> submitEdits(props.friend.id)}Submit Edits></button>
             </div>
         </div>
-    );
-}
-
+    ):
+        <div>
+            <p>
+                <strong>{props.friend.name}</strong> {props.friend.age}
+            </p>
+            <address>{props.friend.email}</address>
+            <button onClick={() => setEditing(true)}>Edit</button>
+            <button onClick={() => props.deleteFriend(props.friend.id)}>Delete</button>
+        </div>
+    }
+    </div>
 )}
 
 export default Friend;
