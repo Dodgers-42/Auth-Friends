@@ -30,10 +30,16 @@ const Friend = (props) => {
                     placeholder="name"
                     />
                 <input
-                    onChange={onChange}type="number" name="age"value={edits.age}placeholder="age"
+                    onChange={onChange}
+                    type="number" name="age"
+                    value={edits.age}
+                    placeholder="age"
                     />
                 <input
-                    onChange={onChange}type="email" name="email"value={edits.email}placeholder="email"
+                    onChange={onChange}
+                    type="email" name="email"
+                    value={edits.email}
+                    placeholder="email"
                     />
             
             <div>

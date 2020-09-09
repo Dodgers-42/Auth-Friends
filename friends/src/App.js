@@ -19,18 +19,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* <ul>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-      <li>
-      <Link to="/friends">Friends</Link>
-      </li>
+      <ul>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+        <Link to="/friends">Friends</Link>
+        </li>
       </ul>
       <Switch>
         <Route path="/login" component={Login} />
-        <PrivateRoute exact path="/friend" friend={state.friends} setFriends={setFriends} component={Friends} />
-      </Switch> */}
+        <PrivateRoute exact path="/friends" friends={state.friends} setFriends={setFriends} component={Friends} />
+      </Switch>
     </div>
   );
 }

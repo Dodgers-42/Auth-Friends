@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { axiosWithAuth } from '../axios/axiosWithAuth';
 
 import Friend from "./Friend";
@@ -13,7 +13,7 @@ const Friends = (props) => {
     })
 
     const onChange = e => {
-        setData({
+        setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
@@ -75,26 +75,33 @@ const Friends = (props) => {
                     <input
                     onChange={onChange}
                     type="text" name="name"
-                    value={edits.name}
+                    value={formData.name}
                     placeholder="Name"/>
                 </label>
                 <label htmlFor="age">   
                     <input
                     onChange={onChange}
                     type="number" name="age"
-                    value={edits.age}
+                    value={formData.age}
                     placeholder="Age"/>    
                 </label>
                 <label htmlFor="email">
                     <input
                     onChange={onChange}
                     type="email" name="email"
-                    value={edits.email}
+                    value={formData.email}
                     placeholder="Email"/>    
                 </label>
                 <button>Submit</button>
             </form>
+        
+        {props.friends && props.friends.map(friend=>{
+            return (
+                <Friend updateFriend={updateFriend} deleteFriend={deleteFriend} key={friend.id}/>
+            )
+        })}
         </main>
     )
 
 }
+export default Friends
